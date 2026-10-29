@@ -1,0 +1,13 @@
+/* 
+   este es el archivo principal de los estilos.
+   su unica funcion es unir todos los archivos css que estan en esta carpeta.
+   al ponerlos en este orden, el navegador carga las variables primero, luego 
+   la base, el layout, los componentes y por ultimo el responsive. asi se 
+   evita que el diseño se rompa.
+*/
+
+@import url('variables.css');
+@import url('base.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('responsive.css');

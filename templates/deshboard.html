@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DecideIA | Toma de decisiones inteligente</title>
+<!-- Ruta relativa para conectar con tu carpeta static -->
+<link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-mark">D</div><div><div class="brand-name">Decide<span>IA</span></div><div class="brand-sub">Decisiones con claridad</div></div></div>
+  <div><div class="nav-label">Espacio de trabajo</div><nav class="nav" aria-label="Navegación principal">
+    <button class="active" data-view="dashboard"><span class="ico">▦</span>Panel principal</button>
+    <button data-view="new"><span class="ico">✚</span>Nueva decisión</button>
+    <button data-view="history"><span class="ico">◷</span>Mis decisiones <span class="count" id="navCount">3</span></button>
+    <button data-view="results"><span class="ico">▤</span>Último análisis</button>
+  </nav></div>
+  <div><div class="nav-label">Preferencias</div><nav class="nav">
+    <button data-view="settings"><span class="ico">⚙</span>Configuración</button>
+    <button id="helpNav"><span class="ico">ⓘ</span>Ayuda y guía</button>
+  </nav></div>
+  <div class="sidebar-bottom">
+    <div class="help-card"><div style="font-size:21px">✦</div><strong>Decide con confianza</strong><p>Organiza tus opciones, entiende los criterios y toma una decisión informada.</p><button id="helpButton">Cómo funciona →</button></div>
+    <div class="profile-mini"><div class="avatar">EM</div><div><strong>Estudiante Demo</strong><small>Cuenta personal</small></div><button class="icon-btn" style="margin-left:auto;background:transparent;border-color:#33415d;color:#b9c5d9" id="logout" title="Cerrar sesión">↪</button></div>
+  </div>
+</aside>
+<main class="main">
+  <header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="icon-btn mobile-menu" id="menuToggle" aria-label="Abrir menú">☰</button><div class="crumb">Espacio de trabajo&nbsp; / &nbsp;<strong id="crumbCurrent">Panel principal</strong></div></div><div class="top-actions"><button class="icon-btn" id="notifications" title="Notificaciones">♧<span class="dot"></span></button><div class="top-user"><div class="avatar">EM</div><div class="user-copy"><strong>Estudiante Demo</strong><small>Plan académico</small></div></div></div></header>
+  <div class="content">
+    
+    <!-- VISTA: DASHBOARD -->
+    <section class="view active" id="view-dashboard">
+      <div class="page-head"><div><div class="eyebrow">MARTES, 28 DE OCTUBRE</div><h1>Buenos días, Estudiante 👋</h1><p>Las mejores decisiones empiezan por entender tus opciones. ¿Qué vamos a resolver hoy?</p></div><button class="btn primary" data-go="new">＋ Crear nueva decisión</button></div>
+      <div class="grid stats">
+        <div class="card stat"><div class="stat-icon">◷</div><div><div class="stat-label">Decisiones analizadas</div><div class="stat-value" id="statTotal">3</div><div class="stat-note">Tu actividad acumulada</div></div></div>
+        <div class="card stat"><div class="stat-icon">✓</div><div><div class="stat-label">Decisiones completadas</div><div class="stat-value" id="statDone">2</div><div class="stat-note">Análisis guardados</div></div></div>
+        <div class="card stat"><div class="stat-icon">◉</div><div><div class="stat-label">En progreso</div><div class="stat-value" id="statProgress">1</div><div class="stat-note" style="color:var(--amber)">Puedes retomarlas</div></div></div>
+        <div class="card stat"><div class="stat-icon">✦</div><div><div class="stat-label">Modelo inteligente</div><div class="stat-value" style="font-size:19px">Demo</div><div class="stat-note" style="color:var(--muted)">Modo demostración</div></div></div>
+      </div>
+      <div class="hero">
+        <div class="card hero-main"><div class="eyebrow">TU ASISTENTE DE DECISIONES</div><h2>Convierte tus dudas en decisiones más claras.</h2><p>Describe lo que necesitas resolver, compara alternativas con los criterios que te importan y revisa un análisis transparente antes de decidir.</p><button class="btn primary" data-go="new">Comenzar un análisis <span>→</span></button><div class="hero-steps"><span class="step-chip"><b>01</b> Describe</span><span class="step-chip"><b>02</b> Compara</span><span class="step-chip"><b>03</b> Analiza</span><span class="step-chip"><b>04</b> Decide</span></div></div>
+        <div class="card hero-side"><div><div class="mini-head"><div class="brain">✧</div><div><strong>Motor de análisis</strong><small>Asistencia basada en criterios</small></div></div><p>El sistema combina una comparación ponderada con un módulo de neurona artificial cuando existe un modelo entrenado adecuado.</p><span class="status">Comparación disponible</span></div><div style="margin-top:20px"><div class="progress-row"><span>Flujo de análisis</span><strong>4 etapas</strong></div><div class="progress"><span style="width:100%"></span></div><div class="progress-row" style="margin-bottom:0"><span>Definir · Evaluar · Revisar · Guardar</span></div></div></div>
+      </div>
+      <div class="grid two-col">
+        <div class="card"><div class="card-pad"><div class="section-title"><div><h2>Decisiones recientes</h2><p>Retoma un análisis o consulta sus resultados.</p></div><button class="link-btn" data-go="history">Ver todas →</button></div></div><div class="table-wrap"><table><thead><tr><th>Decisión</th><th>Fecha</th><th>Estado</th><th></th></tr></thead><tbody id="recentRows"></tbody></table></div></div>
+        <div class="card card-pad"><div class="section-title"><div><h2>Actividad reciente</h2><p>Lo que ha ocurrido en tu espacio.</p></div></div><div class="activity-list" id="activityList"><div class="activity"><div class="activity-icon">✓</div><div><strong>Análisis de laptop guardado</strong><p>Se generó una comparación de alternativas.</p><time>Hoy · 10:42</time></div></div><div class="activity"><div class="activity-icon">✎</div><div><strong>Decisión editada</strong><p>Actualizaste los criterios de un proyecto.</p><time>Ayer · 16:18</time></div></div><div class="activity"><div class="activity-icon">＋</div><div><strong>Nuevo análisis iniciado</strong><p>Tu borrador está listo para continuar.</p><time>Ayer · 15:50</time></div></div></div></div>
+      </div>
+      <div class="grid quick-grid"><button class="quick" data-go="new"><span class="q-icon">✎</span><span><strong>Empezar desde cero</strong><small>Define un nuevo problema</small></span><span style="margin-left:auto">→</span></button><button class="quick" data-go="history"><span class="q-icon">▤</span><span><strong>Revisar historial</strong><small>Consulta decisiones previas</small></span><span style="margin-left:auto">→</span></button><button class="quick" id="quickGuide"><span class="q-icon">ⓘ</span><span><strong>Conocer el proceso</strong><small>Guía rápida de uso</small></span><span style="margin-left:auto">→</span></button></div>
+    </section>
+
+    <!-- VISTA: NUEVA DECISIÓN -->
+    <section class="view" id="view-new">
+      <div class="page-head"><div><div class="eyebrow">NUEVO ANÁLISIS</div><h1>Vamos a resolverlo paso a paso</h1><p>Cuéntanos qué necesitas decidir. Después organizaremos las alternativas y los criterios para compararlas.</p></div><button class="btn" data-go="dashboard">← Volver al panel</button></div>
+      <div class="form-layout"><div>
+        <div class="card form-card"><div class="form-section-head"><div class="num">1</div><div><h2>Describe tu decisión</h2><p>Define la situación y qué resultado te gustaría conseguir.</p></div></div><div class="field-grid">
+          <div class="field full"><label for="decisionTitle">Nombre de la decisión *</label><input id="decisionTitle" placeholder="Ej. Elegir una laptop para la universidad" maxlength="100"></div>
+          <div class="field full"><label for="decisionDesc">¿Qué necesitas decidir? *</label><textarea id="decisionDesc" placeholder="Describe tu situación, qué te preocupa y qué quieres conseguir..."></textarea><div class="helper">No necesitas escribir demasiado; lo importante es explicar el objetivo.</div></div>
+          <div class="field"><label for="decisionType">Categoría</label><select id="decisionType"><option>Estudios y proyectos</option><option>Compras y productos</option><option>Trabajo y carrera</option><option>Organización personal</option><option>Negocios y proyectos</option><option>Otra decisión</option></select></div>
+          <div class="field"><label for="constraint">Restricción principal <span class="hint">(opcional)</span></label><input id="constraint" placeholder="Ej. Presupuesto máximo $12,000"></div>
+        </div></div>
+        <div class="card form-card"><div class="form-section-head"><div class="num">2</div><div><h2>Agrega tus alternativas</h2><p>Incluye al menos dos opciones que quieras comparar. Puedes editar los nombres y sus valores.</p></div></div><div class="option-list" id="optionList"></div><button class="btn soft small" id="addOption" style="margin-top:12px">＋ Agregar alternativa</button><div class="helper">Para esta demostración, los valores son puntuaciones de 1 a 10. En una versión real se adaptarían a los criterios elegidos.</div></div>
+        <div class="card form-card"><div class="form-section-head"><div class="num">3</div><div><h2>Define qué es importante para ti</h2><p>Ajusta el peso de cada criterio. Los pesos se normalizarán automáticamente para comparar las opciones.</p></div></div><div id="criteriaList"></div><div class="weight-total"><span>Total de importancia</span><strong id="weightTotal">100 puntos</strong></div><div class="helper">La importancia refleja tus preferencias; no es una predicción de la neurona.</div></div>
+        <div class="wizard-footer"><small>* Campos obligatorios. Tus datos se mantienen en esta demostración local.</small><button class="btn primary" id="analyzeBtn">Analizar alternativas <span>→</span></button></div>
+      </div>
+      <aside class="side-sticky"><div class="card side-card"><h3>Tu análisis, en 3 pasos</h3><div class="checkline"><span class="check-icon">✓</span><div><strong>Define el problema</strong><small>Explica qué decisión necesitas tomar.</small></div></div><div class="checkline"><span class="check-icon">2</span><div><strong>Compara alternativas</strong><small>Registra las opciones y sus características.</small></div></div><div class="checkline"><span class="check-icon">3</span><div><strong>Revisa el resultado</strong><small>Consulta puntuaciones y razones.</small></div></div></div><div class="card side-card"><h3>¿Cómo se calcula?</h3><p style="font-size:12px;color:var(--muted);margin:0 0 12px">Cada alternativa recibe una puntuación según sus valores y la importancia que asignaste a cada criterio.</p><div style="background:#f8fafc;padding:12px;border-radius:10px;font-size:12px;text-align:center;font-weight:750;color:#4338ca">Puntuación = Σ (valor × peso)</div><p style="font-size:11px;color:var(--muted);margin:10px 0 0">El cálculo ayuda a ordenar opciones. No garantiza que una opción sea la mejor en todos los contextos.</p></div><div class="notice"><strong>Importante</strong>La recomendación es apoyo para reflexionar, no una decisión automática. Comprueba la información y considera consecuencias que no estén reflejadas en los criterios.</div></aside></div>
+    </section>
+
+    <!-- VISTA: RESULTADOS -->
+    <section class="view" id="view-results">
+      <div class="page-head"><div><div class="eyebrow">RESULTADO DEL ANÁLISIS</div><h1>Tu decisión, explicada</h1><p>Revisa cómo se compararon las alternativas y qué factores influyeron en el resultado.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="printResult">⇩ Exportar / imprimir</button><button class="btn primary" data-go="new">＋ Nuevo análisis</button></div></div>
+      <div id="resultContent"><div class="empty card"><div class="empty-icon">▤</div><h3>Aún no hay un análisis propio</h3><p>Crea una decisión, agrega alternativas y criterios. Aquí aparecerá el resultado con una explicación.</p><button class="btn primary" data-go="new">Crear mi primer análisis</button></div></div>
+    </section>
+
+    <!-- VISTA: HISTORIAL -->
+    <section class="view" id="view-history">
+      <div class="page-head"><div><div class="eyebrow">TU ESPACIO PERSONAL</div><h1>Mis decisiones</h1><p>Consulta tus análisis, retoma borradores y revisa las recomendaciones que guardaste.</p></div><button class="btn primary" data-go="new">＋ Nueva decisión</button></div>
+      <div class="filterbar"><input id="historySearch" placeholder="⌕  Buscar por nombre o descripción..."><select id="historyFilter"><option value="all">Todos los estados</option><option value="completed">Completadas</option><option value="draft">En progreso</option></select></div>
+      <div class="card"><div class="table-wrap"><table><thead><tr><th>Decisión</th><th>Categoría</th><th>Fecha</th><th>Estado</th><th>Resultado</th><th>Acciones</th></tr></thead><tbody id="historyRows"></tbody></table></div><div id="historyEmpty" class="empty" style="display:none"><div class="empty-icon">⌕</div><h3>No encontramos decisiones</h3><p>Prueba con otra búsqueda o crea un nuevo análisis.</p></div></div>
+    </section>
+
+    <!-- VISTA: CONFIGURACIÓN -->
+    <section class="view" id="view-settings">
+      <div class="page-head"><div><div class="eyebrow">PERSONALIZACIÓN</div><h1>Configuración</h1><p>Administra las preferencias de esta demostración.</p></div></div>
+      <div class="grid settings-grid"><div class="card settings-nav"><button class="active">Perfil</button><button id="privacySetting">Privacidad y datos</button><button id="modelSetting">Información del modelo</button></div><div class="card card-pad" id="settingsContent"><div class="section-title"><div><h2>Tu perfil</h2><p>Información de cuenta de ejemplo.</p></div></div><div class="field-grid"><div class="field"><label>Nombre visible</label><input value="Estudiante Demo" id="profileName"></div><div class="field"><label>Correo electrónico</label><input value="estudiante@ejemplo.com" type="email" id="profileEmail"></div><div class="field full"><label>Tipo de cuenta</label><input value="Demostración académica" disabled></div></div><button class="btn primary" id="saveProfile" style="margin-top:17px">Guardar preferencias</button><div class="helper">En esta maqueta no se envían datos a un servidor ni se crea una cuenta real.</div></div></div>
+    </section>
+  </div>
+</main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Cómo funciona DecideIA</h2><button class="modal-close" id="closeModal" aria-label="Cerrar">×</button></div><div id="modalBody"></div><div class="modal-actions"><button class="btn" id="modalCancel">Cerrar</button><button class="btn primary" id="modalContinue">Crear una decisión</button></div></div></div>
+
+<!-- Scripts en el orden correcto -->
+<script src="../static/js/data.js"></script>
+<script src="../static/js/utils.js"></script>
+<script src="../static/js/app.js"></script>
+</body>
+</html>

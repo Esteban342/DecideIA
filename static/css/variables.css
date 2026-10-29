@@ -1,0 +1,25 @@
+/* 
+   este archivo contiene las variables globales de css.
+   aqui se guardan los colores, sombras, bordes y tamaños que se usan 
+   en toda la pagina. si necesitas cambiar el color principal o el fondo, 
+   lo haces desde aqui y se actualiza en todos los archivos.
+*/
+
+:root {
+    --bg: #f4f7fb;
+    --surface: #fff;
+    --surface2: #f8fafc;
+    --text: #172033;
+    --muted: #667085;
+    --line: #e5eaf2;
+    --primary: #4f46e5;
+    --primary2: #4338ca;
+    --soft: #eef2ff;
+    --teal: #0f9f8f;
+    --teal-soft: #e8faf6;
+    --amber: #b7791f;
+    --amber-soft: #fff7e6;
+    --red: #c2414b;
+    --shadow: 0 12px 35px rgba(23, 32, 51, 0.06);
+    --radius: 18px;
+}

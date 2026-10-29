@@ -1,0 +1,253 @@
+/* 
+   este archivo contiene la estructura principal de la pagina.
+   incluye la organizacion del layout general, la barra lateral (sidebar),
+   la barra superior (topbar) y las animaciones de cambio de vista.
+*/
+
+/* estructura general de la pagina */
+.app { 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+.main { 
+    flex: 1; 
+    min-width: 0; 
+}
+
+.content { 
+    max-width: 1450px; 
+    margin: 0 auto; 
+    padding: 30px 34px 46px; 
+}
+
+.view { 
+    display: none; 
+}
+
+.view.active { 
+    display: block; 
+    animation: fade 0.22s ease; 
+}
+
+@keyframes fade { 
+    from { 
+        opacity: 0.3; 
+        transform: translateY(4px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: none; 
+    } 
+}
+
+.grid { 
+    display: grid; 
+    gap: 18px; 
+}
+
+/* estilos de la barra lateral */
+.sidebar {
+    width: 250px;
+    background: #111a2e;
+    color: #dbe4f4;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    flex-shrink: 0;
+}
+
+.brand { 
+    display: flex; 
+    align-items: center; 
+    gap: 11px; 
+    padding: 0 10px; 
+}
+
+.brand-mark {
+    width: 38px; 
+    height: 38px; 
+    border-radius: 12px;
+    background: linear-gradient(135deg, #818cf8, #4f46e5);
+    display: grid; 
+    place-items: center; 
+    color: white; 
+    font-weight: 900; 
+    font-size: 19px;
+    box-shadow: 0 7px 18px rgba(79, 70, 229, 0.25);
+}
+
+.brand-name { 
+    font-size: 19px; 
+    font-weight: 800; 
+    letter-spacing: -0.5px; 
+    color: white; 
+}
+
+.brand-name span { 
+    color: #a5b4fc; 
+}
+
+.brand-sub { 
+    font-size: 11px; 
+    color: #8d9ab3; 
+    margin-top: 1px; 
+}
+
+.nav-label { 
+    font-size: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 1.4px; 
+    color: #8190aa; 
+    padding: 0 12px; 
+    margin-bottom: 7px; 
+    font-weight: 800; 
+}
+
+.nav { 
+    display: grid; 
+    gap: 5px; 
+}
+
+.nav button {
+    border: 0; 
+    background: transparent; 
+    color: #b9c5d9; 
+    display: flex; 
+    align-items: center;
+    gap: 12px; 
+    padding: 11px 12px; 
+    border-radius: 11px; 
+    text-align: left; 
+    width: 100%; 
+    font-weight: 600;
+}
+
+.nav button:hover, 
+.nav button.active { 
+    background: #26314b; 
+    color: white; 
+}
+
+.nav button.active { 
+    box-shadow: inset 3px 0 #818cf8; 
+}
+
+.nav .ico { 
+    width: 20px; 
+    text-align: center; 
+    font-size: 17px; 
+}
+
+.nav .count { 
+    margin-left: auto; 
+    font-size: 11px; 
+    background: #3b4560; 
+    padding: 2px 7px; 
+    border-radius: 20px; 
+}
+
+.sidebar-bottom { 
+    margin-top: auto; 
+}
+
+.help-card { 
+    background: #1c2943; 
+    border: 1px solid #33415d; 
+    border-radius: 14px; 
+    padding: 15px; 
+    margin: 0 3px 18px; 
+}
+
+.help-card strong { 
+    display: block; 
+    color: #fff; 
+    margin: 8px 0 4px; 
+}
+
+.help-card p { 
+    color: #aebbd0; 
+    font-size: 12px; 
+    margin: 0 0 12px; 
+}
+
+.help-card button { 
+    background: #334568; 
+    color: #fff; 
+    border: 0; 
+    padding: 8px 10px; 
+    border-radius: 8px; 
+    font-size: 12px; 
+    font-weight: 700; 
+}
+
+.profile-mini { 
+    border-top: 1px solid #2d3850; 
+    padding: 17px 7px 0; 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+}
+
+.profile-mini strong { 
+    display: block; 
+    color: #fff; 
+    font-size: 12px; 
+}
+
+.profile-mini small { 
+    color: #95a4bd; 
+    font-size: 11px; 
+}
+
+/* estilos de la barra superior */
+.topbar {
+    height: 76px; 
+    background: rgba(255, 255, 255, 0.86); 
+    border-bottom: 1px solid var(--line);
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 34px;
+    position: sticky; 
+    top: 0; 
+    z-index: 5; 
+    backdrop-filter: blur(14px);
+}
+
+.crumb { 
+    color: var(--muted); 
+    font-size: 12px; 
+}
+
+.crumb strong { 
+    color: var(--text); 
+}
+
+.top-actions { 
+    display: flex; 
+    align-items: center; 
+    gap: 14px; 
+}
+
+.top-user { 
+    display: flex; 
+    align-items: center; 
+    gap: 9px; 
+}
+
+.top-user .avatar { 
+    height: 34px; 
+    width: 34px; 
+}
+
+.top-user strong { 
+    font-size: 12px; 
+    display: block; 
+}
+
+.top-user small { 
+    font-size: 11px; 
+    color: var(--muted); 
+}
