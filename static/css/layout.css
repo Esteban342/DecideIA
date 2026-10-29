@@ -251,3 +251,16 @@
     font-size: 11px; 
     color: var(--muted); 
 }
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-menu {
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    padding: 0; 
+}
