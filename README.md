@@ -11,7 +11,7 @@ Actualmente, el repositorio contiene el desarrollo del frontend de la aplicació
 ## Estructura de Carpetas
 
 El proyecto sigue una arquitectura modular para separar responsabilidades y facilitar su mantenimiento. A continuación se describe la función de cada carpeta y archivo.
-
+```
 DecideIA/
 ├── datos/
 │   └── datos_entrenamiento.csv
@@ -38,6 +38,7 @@ DecideIA/
 ├── app.py
 ├── README.md
 └── requirements.txt
+```
 
 ### Detalle de Carpetas y Archivos
 
